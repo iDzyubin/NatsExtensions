@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>NatsExtensions</RootNamespace>
+        <PackageId>NatsExtensions</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>idzyubin</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+      <PackageReference Include="NATS.Client" Version="0.14.1" />
+    </ItemGroup>
+
+</Project>
