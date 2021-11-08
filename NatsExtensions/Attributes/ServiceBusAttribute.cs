@@ -3,14 +3,13 @@
 namespace NatsExtensions.Attributes
 {
     /// <summary>
-    ///     Аттрибут для запросов,
-    ///     который позволяет понять откуда пришли данные
-    ///     и куда их затем отправлять 
+    ///     Attribute that contains target code
+    ///     for nats request-reply interaction
     /// </summary>
     public class ServiceBusAttribute : Attribute
     {
         /// <summary>
-        ///     Код, по которому можно получить доступ к обработчику
+        ///     Target code for request reply interaction
         /// </summary>
         public int Code { get; set; }
     }

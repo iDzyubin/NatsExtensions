@@ -1,17 +1,17 @@
 ﻿namespace NatsExtensions.Options
 {
     /// <summary>
-    ///     Настройки NATS
+    ///     NATS settings options
     /// </summary>
     public class NatsOptions
     {
         /// <summary>
-        ///     Название секции конфигурации
+        ///     Configuration section name
         /// </summary>
         public const string Section = "Nats";
         
         /// <summary>
-        ///     Название субъекта
+        ///     Subject name
         /// </summary>
         public string Subject { get; set; }
     }

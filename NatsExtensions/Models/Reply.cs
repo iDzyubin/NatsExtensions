@@ -1,7 +1,7 @@
 ﻿namespace NatsExtensions.Models
 {
     /// <summary>
-    ///     Модель ответа на запрос
+    ///    Reply model for sending response
     /// </summary>
     public abstract class Reply
     {

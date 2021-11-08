@@ -4,7 +4,7 @@
         <TargetFramework>net5.0</TargetFramework>
         <RootNamespace>NatsExtensions</RootNamespace>
         <PackageId>NatsExtensions</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.0.1.1</Version>
         <Authors>idzyubin</Authors>
     </PropertyGroup>
 

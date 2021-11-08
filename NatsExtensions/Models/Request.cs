@@ -1,7 +1,7 @@
 ﻿namespace NatsExtensions.Models
 {
     /// <summary>
-    ///     Модель запроса
+    ///     Request model for receiving data
     /// </summary>
     public abstract class Request
     {

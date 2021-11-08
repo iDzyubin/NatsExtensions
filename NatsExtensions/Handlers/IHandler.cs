@@ -4,19 +4,19 @@ using NatsExtensions.Models;
 namespace NatsExtensions.Handlers
 {
     /// <summary>
-    ///     Интерфейс обработчика запросов из шины данных
+    ///     Interface for nats handler
     /// </summary>
-    /// <typeparam name="TRequest">Тип запроса</typeparam>
-    /// <typeparam name="TResponse">Тип ответа на запрос</typeparam>
+    /// <typeparam name="TRequest">Request target type</typeparam>
+    /// <typeparam name="TResponse">Reply target type</typeparam>
     public interface IHandler<TRequest, TResponse>
         where TRequest : Request
         where TResponse : Reply
     {
         /// <summary>
-        ///     Обработать полученный запрос
+        ///     Handle received request
         /// </summary>
-        /// <param name="request">Запрос на обработку данных</param>
-        /// <returns>Ответ на запрос</returns>
+        /// <param name="request">Request from remote subject</param>
+        /// <returns>Handler reply</returns>
         Task<TResponse> Handle(TRequest request);
     }
 }
