@@ -1,6 +1,4 @@
-﻿using System;
-using JetBrains.Annotations;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using NatsExtensions.Handlers;
 using NatsExtensions.HostedServices;
 using NatsExtensions.Models;
