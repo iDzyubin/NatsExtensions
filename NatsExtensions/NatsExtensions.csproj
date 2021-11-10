@@ -6,6 +6,10 @@
         <PackageId>NatsExtensions</PackageId>
         <Version>1.0.1.1</Version>
         <Authors>idzyubin</Authors>
+        <Description>NatsExtensions for learning</Description>
+        <PackageProjectUrl>https://github.com/iDzyubin/NatsExtensions</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/iDzyubin/NatsExtensions</RepositoryUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
