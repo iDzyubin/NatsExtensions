@@ -1,8 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using NATS.Client;
 using NatsExtensions.Handlers;
 using NatsExtensions.HostedServices;
 using NatsExtensions.Models;
+using NatsExtensions.Options;
 using NatsExtensions.Proxies;
+using NatsExtensions.Services;
 
 namespace NatsExtensions.Extensions
 {
@@ -11,6 +15,22 @@ namespace NatsExtensions.Extensions
     /// </summary>
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddNatsExtensions(this IServiceCollection services, Action<NatsOptions> action)
+        {
+            var natsOptions = new NatsOptions();
+            action.Invoke(natsOptions);
+            
+            return services.AddTransient(_ =>
+            {
+                var factory = new ConnectionFactory();
+                var options = ConnectionFactory.GetDefaultOptions();
+                options.Url = natsOptions.ConnectionString;
+                return factory.CreateConnection();
+            })
+           .AddTransient<INatsService, NatsService>()
+           .Configure<NatsOptions>(options => { action.Invoke(options); });
+        }
+        
         /// <summary>
         ///     Register NATS handler for handle request from external
         /// </summary>

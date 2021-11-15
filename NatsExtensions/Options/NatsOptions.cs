@@ -14,5 +14,10 @@
         ///     Subject name
         /// </summary>
         public string Subject { get; set; }
+        
+        /// <summary>
+        ///     Connection string to NATS
+        /// </summary>
+        public string ConnectionString { get; set; }
     }
 }
