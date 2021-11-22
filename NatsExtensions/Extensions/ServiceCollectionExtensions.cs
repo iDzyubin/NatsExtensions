@@ -35,13 +35,13 @@ namespace NatsExtensions.Extensions
         ///     Register NATS handler for handle request from external
         /// </summary>
         /// <param name="services"><see cref="IServiceCollection"/></param>
-        /// <typeparam name="TRequest"><see cref="Request"/></typeparam>
-        /// <typeparam name="TReply"><see cref="Reply"/></typeparam>
+        /// <typeparam name="TRequest"><see cref="IRequest"/></typeparam>
+        /// <typeparam name="TReply"><see cref="IReply"/></typeparam>
         /// <typeparam name="THandler"><see cref="IHandler{TRequest,TReply}"/></typeparam>
         /// <returns>The same service collection so that multiple calls can be chained.</returns>
         public static IServiceCollection AddNatsHandler<TRequest, TReply, THandler>(this IServiceCollection services)
-            where TRequest : Request
-            where TReply : Reply
+            where TRequest : IRequest
+            where TReply : IReply
             where THandler : class, IHandler<TRequest, TReply>
         {
             services.AddTransient<IHandler<TRequest, TReply>, THandler>();
@@ -53,13 +53,13 @@ namespace NatsExtensions.Extensions
         ///     Register NATS proxy for isolate logic of sending request to external
         /// </summary>
         /// <param name="services"><see cref="IServiceCollection"/></param>
-        /// <typeparam name="TRequest"><see cref="Request"/></typeparam>
-        /// <typeparam name="TReply"><see cref="Reply"/></typeparam>
+        /// <typeparam name="TRequest"><see cref="IRequest"/></typeparam>
+        /// <typeparam name="TReply"><see cref="IReply"/></typeparam>
         /// <typeparam name="TProxy"><see cref="IProxy{TRequest,TReply}"/></typeparam>
         /// <returns>The same service collection so that multiple calls can be chained.</returns>
         public static IServiceCollection AddNatsProxy<TRequest, TReply, TProxy>(this IServiceCollection services)
-            where TRequest : Request
-            where TReply : Reply
+            where TRequest : IRequest
+            where TReply : IReply
             where TProxy : class, IProxy<TRequest, TReply>
         {
             services.AddTransient<IProxy<TRequest, TReply>, TProxy>();

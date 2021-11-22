@@ -1,27 +1,26 @@
-﻿using System;
-using NatsExtensions.Models;
+﻿using NatsExtensions.Models;
 using NatsExtensions.Services;
 
 namespace NatsExtensions.Proxies
 {
     /// <summary>
-    ///     Proxy class with base logic
+    ///     Base logic for sync request-reply interaction
     /// </summary>
     /// <typeparam name="TRequest"><see cref="IRequest"/></typeparam>
     /// <typeparam name="TReply"><see cref="IReply"/></typeparam>
-    [Obsolete("It will be deleted in next versions. Use BaseSyncProxy or BaseAsyncProxy classes")]
-    public class BaseProxy<TRequest, TReply> : IProxy<TRequest, TReply>
+    public class BaseSyncProxy<TRequest, TReply> : ISyncProxy<TRequest, TReply>
         where TRequest : IRequest
         where TReply : IReply
     {
+        /// <inheritdoc cref="INatsService"/>
         private readonly INatsService _natsService;
 
-        /// <inheritdoc cref="BaseProxy{TRequest,TReply}"/>
-        public BaseProxy(INatsService natsService) =>
+        /// <inheritdoc cref="BaseAsyncProxy{TRequest,TReply}"/>
+        public BaseSyncProxy(INatsService natsService) =>
             _natsService = natsService;
-
+        
         /// <inheritdoc/>
-        public virtual TReply Execute(TRequest request, string subject) =>
+        public TReply Execute(TRequest request, string subject) =>
             _natsService.RequestReply<TRequest, TReply>(request, subject);
     }
 }

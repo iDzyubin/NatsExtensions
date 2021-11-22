@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using NatsExtensions.Models;
 
 namespace NatsExtensions.Extensions
 {
@@ -16,7 +17,7 @@ namespace NatsExtensions.Extensions
         /// <param name="data">Data for transforming</param>
         /// <typeparam name="T">Target data type</typeparam>
         /// <returns>Byte array</returns>
-        public static byte[] ConvertToByteArray<T>(this T data) where T : class
+        public static byte[] ConvertToByteArray<T>(this T data) where T : IRequest, IReply
             => data != null
                 ? JsonSerializer.SerializeToUtf8Bytes(data)
                 : default;
@@ -27,7 +28,7 @@ namespace NatsExtensions.Extensions
         /// <param name="data">Data in byte array format</param>
         /// <typeparam name="T">Target data type</typeparam>
         /// <returns>Targer object data</returns>
-        public static T ConvertFromByteArray<T>(this byte[] data) where T : class
+        public static T ConvertFromByteArray<T>(this byte[] data) where T : IRequest, IReply
             => data != null
                 ? JsonSerializer.Deserialize<T>(new ReadOnlySpan<byte>(data))
                 : default;

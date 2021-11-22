@@ -1,9 +1,9 @@
 ﻿namespace NatsExtensions.Models
 {
     /// <summary>
-    ///     Request model for receiving data
+    ///     IRequest model for receiving data
     /// </summary>
-    public abstract class Request
+    public interface IRequest
     {
     }
 }
