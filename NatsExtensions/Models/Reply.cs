@@ -3,7 +3,5 @@
     /// <summary>
     ///    Reply model for sending response
     /// </summary>
-    public interface IReply
-    {
-    }
+    public abstract class Reply { }
 }

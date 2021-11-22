@@ -19,5 +19,10 @@
         ///     Connection string to NATS
         /// </summary>
         public string ConnectionString { get; set; }
+
+        /// <summary>
+        ///     Timeout for sync operations
+        /// </summary>
+        public int Timeout { get; set; } = 5 * 1000;
     }
 }

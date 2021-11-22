@@ -6,16 +6,16 @@ namespace NatsExtensions.Proxies
     /// <summary>
     ///     Base logic for sync request-reply interaction
     /// </summary>
-    /// <typeparam name="TRequest"><see cref="IRequest"/></typeparam>
-    /// <typeparam name="TReply"><see cref="IReply"/></typeparam>
-    public class BaseSyncProxy<TRequest, TReply> : ISyncProxy<TRequest, TReply>
-        where TRequest : IRequest
-        where TReply : IReply
+    /// <typeparam name="TRequest"><see cref="Request"/></typeparam>
+    /// <typeparam name="TReply"><see cref="Reply"/></typeparam>
+    public class BaseSyncProxy<TRequest, TReply> : ISyncProxy<TRequest, TReply> 
+        where TRequest : Request 
+        where TReply   : Reply
     {
         /// <inheritdoc cref="INatsService"/>
         private readonly INatsService _natsService;
 
-        /// <inheritdoc cref="BaseAsyncProxy{TRequest,TReply}"/>
+        /// <inheritdoc cref="BaseSyncProxy{TRequest,TReply}"/>
         public BaseSyncProxy(INatsService natsService) =>
             _natsService = natsService;
         

@@ -7,12 +7,12 @@ namespace NatsExtensions.Proxies
     /// <summary>
     ///     Proxy class with base logic
     /// </summary>
-    /// <typeparam name="TRequest"><see cref="IRequest"/></typeparam>
-    /// <typeparam name="TReply"><see cref="IReply"/></typeparam>
+    /// <typeparam name="TRequest"><see cref="Request"/></typeparam>
+    /// <typeparam name="TReply"><see cref="Reply"/></typeparam>
     [Obsolete("It will be deleted in next versions. Use BaseSyncProxy or BaseAsyncProxy classes")]
     public class BaseProxy<TRequest, TReply> : IProxy<TRequest, TReply>
-        where TRequest : IRequest
-        where TReply : IReply
+        where TRequest : Request
+        where TReply : Reply
     {
         private readonly INatsService _natsService;
 
