@@ -60,16 +60,16 @@ When you create a handler, you should specify request and reply types in generic
 ### Create Proxy
 For those cases when you should send request to external services and expects reply, you should use *Proxy*.
 
-If you wanna use default logic, you can omit custom method realization and use short proxy realization from example below. 
-Otherwise, you can override virtual method ```TReply Execute(TRequest request, string subject)``` and realize your custom logic.  
+### Sync Proxy
 
-**Remarks:** Now, you can use only sync Proxy, but this problem was resolve in near future.
+There is an interface for sync proxy interaction - ```ISyncProxy<TRequest, TReply>```. If you want to use default logic, you can omit custom method realization and use short proxy realization from example below. 
+Otherwise, you can implement interface ```ISyncProxy<TRequest, TReply>``` and realize your custom logic.  
 
-Example of proxy declaration:
+Example of sync proxy declaration:
 ```C#
     // ./Proxies/OrderServiceProxy.cs
 
-    public class OrderServiceProxy : BaseProxy<GetOrdersByCustomerIdRequest, GetOrdersByCustomerIdReply>
+    public class OrderServiceProxy : BaseSyncProxy<GetOrdersByCustomerIdRequest, GetOrdersByCustomerIdReply>
     {
         public OrderServiceProxy(INatsService natsService) : base(natsService) { }
     }
@@ -89,6 +89,45 @@ Example of proxy usage:
           ...
           
           var reply = _orderServiceProxy.Execute(
+              request: new GetOrdersByCustomerIdRequest { CustomerId = customerId },
+              subject: ServiceBusSubjects.OrderSubject);
+              
+          ...
+      }
+                    
+      ...
+  }
+```
+
+### Async Proxy
+
+There is an interface for async proxy interaction - ```IAsyncProxy<TRequest>```. If you want to use default logic, you can omit custom method realization and use short proxy realization from example below. 
+Otherwise, you can implement interface ```IAsyncProxy<TRequest>``` and realize your custom logic.  
+
+Example of async proxy declaration:
+```C#
+    // ./Proxies/OrderServiceProxy.cs
+
+    public class OrderServiceProxy : BaseAsyncProxy<GetOrdersByCustomerIdRequest>
+    {
+        public OrderServiceProxy(INatsService natsService) : base(natsService) { }
+    }
+```
+
+Example of proxy usage:
+```C#
+  [ApiController]
+  [Route("/api/[controller]")]
+  public class CustomerController : ControllerBase
+  {
+      ...
+      
+      [HttpGet("{customerId:long}")]
+      public async Task<IActionResult> GetCustomerWithOrdersById(long customerId)
+      {
+          ...
+          
+          await _orderServiceProxy.ExecuteAsync(
               request: new GetOrdersByCustomerIdRequest { CustomerId = customerId },
               subject: ServiceBusSubjects.OrderSubject);
               
