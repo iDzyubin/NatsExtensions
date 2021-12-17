@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using NatsExtensions.Models;
 
 namespace NatsExtensions.Services
@@ -13,21 +14,39 @@ namespace NatsExtensions.Services
         /// </summary>
         /// <param name="request"><see cref="Request"/></param>
         /// <param name="subject">Subject, that handles request</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <typeparam name="TRequest"><see cref="Request"/></typeparam>
         /// <typeparam name="TReply"><see cref="Reply"/></typeparam>
         /// <returns><see cref="Reply"/></returns>
-        TReply RequestReply<TRequest, TReply>(TRequest request, string subject) where TRequest : Request where TReply : Reply;
-        
+        TReply RequestReply<TRequest, TReply>(TRequest request, string subject, CancellationToken cancellationToken) 
+            where TRequest : Request 
+            where TReply : Reply;
+
         /// <summary>
         ///     Send async request to the remote handler
         /// </summary>
         /// <param name="request"><see cref="Request"/></param>
         /// <param name="subject">Subject, that handles request</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
         /// <typeparam name="TRequest"><see cref="Request"/></typeparam>
-        /// <returns><see cref="Task"/></returns>
+        /// <typeparam name="TReply"><see cref="Reply"/></typeparam>
+        /// <returns><see cref="Reply"/></returns>
         /// <remarks>
         ///     Should exists handler that intercepts response from external system
         /// </remarks>
-        Task RequestReplyAsync<TRequest>(TRequest request, string subject) where TRequest : Request;
+        Task<TReply> RequestReplyAsync<TRequest, TReply>(TRequest request, string subject, CancellationToken cancellationToken) 
+            where TRequest : Request 
+            where TReply : Reply;
+
+        /// <summary>
+        ///     Publish request to the remote handler without waiting a reply.
+        /// </summary>
+        /// <param name="request"><see cref="Request"/></param>
+        /// <param name="subject">Subject, that handles request</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <typeparam name="TRequest"><see cref="Request"/></typeparam>
+        /// <returns><see cref="Task"/></returns>
+        Task PublistAsync<TRequest>(TRequest request, string subject, CancellationToken cancellationToken)
+            where TRequest : Request;
     }
 }

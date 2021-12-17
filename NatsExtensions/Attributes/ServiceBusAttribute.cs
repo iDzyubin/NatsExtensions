@@ -8,6 +8,8 @@ namespace NatsExtensions.Attributes
     /// </summary>
     public class ServiceBusAttribute : Attribute
     {
+        public ServiceBusAttribute(int code) => Code = code;
+
         /// <summary>
         ///     Target code for request reply interaction
         /// </summary>

@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatsExtensions", "NatsExtensions\NatsExtensions.csproj", "{10B4D609-91FD-4F17-B157-550F2C707E53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatsExtensions.Sender", "NatsExtensions.Sender\NatsExtensions.Sender.csproj", "{20768C45-1D54-46B5-AC42-81656DDEE51F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatsExtensions.Receiver", "NatsExtensions.Receiver\NatsExtensions.Receiver.csproj", "{1F641133-3FAE-41FD-B6DD-F0AF8628D5C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{10B4D609-91FD-4F17-B157-550F2C707E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10B4D609-91FD-4F17-B157-550F2C707E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10B4D609-91FD-4F17-B157-550F2C707E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20768C45-1D54-46B5-AC42-81656DDEE51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20768C45-1D54-46B5-AC42-81656DDEE51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20768C45-1D54-46B5-AC42-81656DDEE51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20768C45-1D54-46B5-AC42-81656DDEE51F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F641133-3FAE-41FD-B6DD-F0AF8628D5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F641133-3FAE-41FD-B6DD-F0AF8628D5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F641133-3FAE-41FD-B6DD-F0AF8628D5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F641133-3FAE-41FD-B6DD-F0AF8628D5C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
